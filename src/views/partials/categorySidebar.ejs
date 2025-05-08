@@ -1,0 +1,6 @@
+<nav>
+    <a href="/">All</a>
+    <% categories.forEach(category => { %>
+        <a href="/filter/<%= category %>"><%= category %></a>
+    <% }); %>
+</nav>
