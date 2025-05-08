@@ -1,9 +1,7 @@
 const express = require("express");
 const router = express.Router();
+const inventoryController = require("../controllers/inventoryController");
 
-router.get("/", (req, res) => {
-    res.send("Hello world");
-    console.log("Success");
-})
+router.get("/", inventoryController.getAllItems);
 
 module.exports = router;
