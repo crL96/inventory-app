@@ -19,7 +19,16 @@ async function getItemsInCategory(category) {
     return rows;
 }
 
+async function addNewItem(item) {
+    await pool.query(`
+        INSERT INTO items (name, size, price, quantity, category_id)
+        VALUES ($1, $2, $3, $4, $5)
+        `, [item.itemName, item.itemSize, item.itemPrice, item.itemQuantity, item.itemCategory]);
+    console.log("New item added");
+}
+
 module.exports = {
     getAllItems,
-    getItemsInCategory
+    getItemsInCategory,
+    addNewItem
 }

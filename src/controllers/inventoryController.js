@@ -12,7 +12,18 @@ async function getItemsInCategory(req, res) {
     res.render("index", {title: "Filtered items", items: items})
 }
 
+function newItemFormGet(req, res) {
+    res.render("newItemForm");
+}
+
+async function newItemFormPost(req, res) {
+    db.addNewItem(req.body);
+    res.redirect("/");
+}
+
 module.exports = {
     getAllItems,
-    getItemsInCategory
+    getItemsInCategory,
+    newItemFormGet,
+    newItemFormPost
 }
