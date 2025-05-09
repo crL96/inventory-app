@@ -21,9 +21,21 @@ async function newItemFormPost(req, res) {
     res.redirect("/");
 }
 
+async function updateItemFormPost(req, res) {
+    db.updateItem(req.body);
+    res.redirect("/");
+}
+
+async function updateItemFormGet(req, res) {
+    const item = await db.getSingleItem(req.params.id)
+    res.render("updateItemForm", {item: item});
+}
+
 module.exports = {
     getAllItems,
     getItemsInCategory,
     newItemFormGet,
-    newItemFormPost
+    newItemFormPost,
+    updateItemFormPost,
+    updateItemFormGet
 }

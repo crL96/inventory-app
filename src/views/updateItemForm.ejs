@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Update item</title>
+</head>
+<body>
+    <h1>Update Item</h1>
+
+    <form action="/update" method="POST">
+        <legend>Item details</legend>
+        <label for="itemName">Name: </label>
+        <input type="text" name="itemName" id="itemName" value="<%= item.name %>">
+        <label for="itemSize">Size: (Example: 250g)</label>
+        <input type="text" name="itemSize" id="itemSize" value="<%= item.size %>">
+        <label for="itemPrice">Price: ($)</label>
+        <input type="number" name="itemPrice" id="itemPrice" min="0.01" step="0.01" value="<%= item.price %>">
+        <label for="itemQuantity">Quantity: </label>
+        <input type="number" name="itemQuantity" id="itemQuantity" min="1" value="<%= item.quantity %>">
+        <label for="itemCategory">Category: </label>
+        <select name="itemCategory" id="itemCategory">
+            <option value="<%= item.category_id %>">No change</option>
+            <option value="1">Drinks</option>
+            <option value="2">Candy</option>
+            <option value="3">Chips</option>
+        </select>
+        <input type="number" hidden name="itemId" id="itemId" value="<%= item.id %>">
+        <button type="submit">Update item</button>
+    </form>
+    
+</body>
+</html>

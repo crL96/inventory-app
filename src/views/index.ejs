@@ -30,8 +30,8 @@
                 <td>$<%= item.stock %></td>
                 <td><%= item.category %></td>
                 <td>
-                    <button>Update</button>
-                    <button>Delete</button>
+                    <button class="linkBtn"><a href="/update/<%= item.id %>">Update</a></button>
+                    <button class="linkBtn">Delete</button>
                 </td>
             </tr>
         <% }); %>
