@@ -5,7 +5,7 @@ const indexRouter = require("./routes/indexRoute");
 const app = express();
 
 //Handle static assets
-const assetsPath = path.join(__dirname, "public");
+const assetsPath = path.join(__dirname, "../public");
 app.use(express.static(assetsPath));
 
 //Handle ejs

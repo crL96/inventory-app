@@ -4,9 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Update item</title>
+    <link rel="stylesheet" href="/styles/style.css">
 </head>
 <body>
-    <h1>Update Item</h1>
+    <header>
+        <h1>Update Item</h1>
+    </header>
 
     <%- include("partials/errors.ejs") %>
     <form action="/update" method="POST">
@@ -29,7 +32,7 @@
         <input type="number" hidden name="itemId" id="itemId" value="<%= item.id %>">
         <button type="submit">Update item</button>
     </form>
-    <button class="linkBtn"><a href="/">Go Back</a></button>
+    <a href="/" class="linkBtn"><button>Go Back</button></a>
 
 </body>
 </html>

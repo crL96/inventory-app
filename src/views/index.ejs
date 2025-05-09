@@ -4,15 +4,18 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><%= title %></title>
+    <link rel="stylesheet" href="/styles/style.css">
 </head>
 <body>
-    <h1>Inventory</h1>
+    <header>
+        <h1>Inventory App</h1>
+    </header>
 
     <%- include("partials/categorySidebar.ejs", { categories: ["Drinks", "Candy", "Chips"] }) %>
 
     <%- include("partials/itemsSummary", { summary: summary }) %>
 
-    <button class="linkBtn"><a href="/new">Add New Item</a></button>
+    <a href="/new" class="linkBtn"><button>Add New Item</button></a>
 
     <table>
         <caption><%= title %></caption>
@@ -34,8 +37,8 @@
                 <td>$<%= Math.round(item.stock) %></td>
                 <td><%= item.category %></td>
                 <td>
-                    <button class="linkBtn"><a href="/update/<%= item.id %>">Update</a></button>
-                    <button class="linkBtn"><a href="/delete/<%= item.id %>">Delete</a></button>
+                    <a href="/update/<%= item.id %>" class="linkBtn"><button>Update</button></a>
+                    <a href="/delete/<%= item.id %>" class="linkBtn"><button>Delete</button></a>
                 </td>
             </tr>
         <% }); %>
