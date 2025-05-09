@@ -71,14 +71,27 @@ async function deleteItemFormGet(req, res) {
     res.render("deleteItemForm", { item: item });
 };
 
-async function deleteItemPost(req, res) {
-    if (req.body.password === process.env.ADMIN_PW) {
+const validateAdmin = [
+    body("password")
+        .equals(process.env.ADMIN_PW).withMessage("Incorrect Password")
+]
+
+const deleteItemPost = [
+    validateAdmin, //validate admin middleware
+    
+    async (req, res) => {
+        const errors = validationResult(req)
+        if (!errors.isEmpty()) {
+            const item = await db.getSingleItem(req.body.itemId)
+            return res.status(400).render("deleteItemForm", {
+                item: item,
+                errors: errors.array(),
+            });
+        }
         await db.deleteItem(req.body.itemId)
         res.redirect("/");
-    } else {
-        res.redirect("/delete/" + req.body.itemId)
     }
-}
+]
 
 module.exports = {
     getAllItems,
