@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete item</title>
+</head>
+<body>
+    <h1>Delete Item</h1>
+
+    <form action="/delete" method="POST">
+        <legend>Confirm deletion of item: <%= item.name %></legend>
+        <label for="itemName">Admin Password: </label>
+        <input type="password" name="password" id="password">
+        <input type="number" hidden name="itemId" id="itemId" value="<%= item.id %>">
+        <button type="submit">Delete item</button>
+    </form>
+    
+</body>
+</html>

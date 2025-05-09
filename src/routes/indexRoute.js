@@ -11,4 +11,7 @@ router.post("/new", inventoryController.newItemFormPost);
 router.get("/update/:id", inventoryController.updateItemFormGet);
 router.post("/update", inventoryController.updateItemFormPost);
 
+router.get("/delete/:id", inventoryController.deleteItemFormGet);
+router.post("/delete", inventoryController.deleteItemPost);
+
 module.exports = router;
