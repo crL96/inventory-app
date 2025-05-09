@@ -8,18 +8,19 @@
 <body>
     <h1>Add New Item</h1>
 
+    <%- include("partials/errors.ejs") %>
     <form action="/new" method="POST">
         <legend>Item details</legend>
         <label for="itemName">Name: </label>
-        <input type="text" name="itemName" id="itemName">
+        <input type="text" name="itemName" id="itemName" required>
         <label for="itemSize">Size: (Example: 250g)</label>
-        <input type="text" name="itemSize" id="itemSize">
+        <input type="text" name="itemSize" id="itemSize" required>
         <label for="itemPrice">Price: ($)</label>
-        <input type="number" name="itemPrice" id="itemPrice" min="0.01" step="0.01">
+        <input type="number" name="itemPrice" id="itemPrice" min="0.01" step="0.01" required>
         <label for="itemQuantity">Quantity: </label>
-        <input type="number" name="itemQuantity" id="itemQuantity" min="1">
+        <input type="number" name="itemQuantity" id="itemQuantity" min="0" required>
         <label for="itemCategory">Category: </label>
-        <select name="itemCategory" id="itemCategory">
+        <select name="itemCategory" id="itemCategory" required>
             <option value="1">Drinks</option>
             <option value="2">Candy</option>
             <option value="3">Chips</option>

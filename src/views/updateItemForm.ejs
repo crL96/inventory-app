@@ -8,18 +8,19 @@
 <body>
     <h1>Update Item</h1>
 
+    <%- include("partials/errors.ejs") %>
     <form action="/update" method="POST">
         <legend>Item details</legend>
         <label for="itemName">Name: </label>
-        <input type="text" name="itemName" id="itemName" value="<%= item.name %>">
+        <input type="text" name="itemName" id="itemName" value="<%= item.name %>" required>
         <label for="itemSize">Size: (Example: 250g)</label>
-        <input type="text" name="itemSize" id="itemSize" value="<%= item.size %>">
+        <input type="text" name="itemSize" id="itemSize" value="<%= item.size %>" required>
         <label for="itemPrice">Price: ($)</label>
-        <input type="number" name="itemPrice" id="itemPrice" min="0.01" step="0.01" value="<%= item.price %>">
+        <input type="number" name="itemPrice" id="itemPrice" min="0.01" step="0.01" value="<%= item.price %>" required>
         <label for="itemQuantity">Quantity: </label>
-        <input type="number" name="itemQuantity" id="itemQuantity" min="1" value="<%= item.quantity %>">
+        <input type="number" name="itemQuantity" id="itemQuantity" min="1" value="<%= item.quantity %>" required>
         <label for="itemCategory">Category: </label>
-        <select name="itemCategory" id="itemCategory">
+        <select name="itemCategory" id="itemCategory" required>
             <option value="<%= item.category_id %>">No change</option>
             <option value="1">Drinks</option>
             <option value="2">Candy</option>
