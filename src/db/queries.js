@@ -19,6 +19,24 @@ async function getItemsInCategory(category) {
     return rows;
 }
 
+async function getSummary(category = false) {
+    if (!category) {
+        const { rows } = await pool.query(`
+            SELECT SUM(quantity) as total_items, SUM(quantity * price) as total_stock
+            FROM items
+            `);
+        return rows[0];
+    } else {
+        const { rows } = await pool.query(`
+            SELECT SUM(quantity) as total_items, SUM(quantity * price) as total_stock
+            FROM items
+            JOIN categories ON category_id = categories.id
+            WHERE categories.name = $1
+            `, [category]);
+        return rows[0];
+    }
+}
+
 async function getSingleItem(id) {
     const { rows } = await pool.query(`
         SELECT items.id as id, items.name as name, size, price, quantity, (price * quantity) as stock, categories.name as category, category_id
@@ -58,5 +76,6 @@ module.exports = {
     addNewItem,
     updateItem,
     getSingleItem,
-    deleteItem
+    deleteItem,
+    getSummary
 }

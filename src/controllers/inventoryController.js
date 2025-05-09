@@ -4,12 +4,14 @@ const { body, validationResult } = require("express-validator");
 
 async function getAllItems(req, res) {
     const items = await db.getAllItems();
-    res.render("index", {title: "All items", items: items})
+    const summary = await db.getSummary();
+    res.render("index", {title: "All products", items: items, summary: summary })
 }
 
 async function getItemsInCategory(req, res) {
     const items = await db.getItemsInCategory(req.params.category);
-    res.render("index", {title: "Filtered items", items: items})
+    const summary = await db.getSummary(req.params.category);
+    res.render("index", {title: req.params.category + " products", items: items, summary: summary })
 }
 
 function newItemFormGet(req, res) {
