@@ -32,7 +32,7 @@ const validateItem = [
 const newItemFormPost = [
     validateItem, // validate form middleware
 
-    (req, res) => {
+    async (req, res) => {
         const errors = validationResult(req)
         if (!errors.isEmpty()) {
             return res.status(400).render("newItemForm", {
@@ -40,7 +40,7 @@ const newItemFormPost = [
             });
         }
 
-        db.addNewItem(req.body);
+        await db.addNewItem(req.body);
         res.redirect("/");
     }
 
@@ -58,7 +58,7 @@ const updateItemFormPost = [
                 errors: errors.array(),
             });
         }
-        db.updateItem(req.body);
+        await db.updateItem(req.body);
         res.redirect("/");
     }
 ]
