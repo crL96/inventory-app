@@ -61,8 +61,6 @@ th, td {
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-
-    place-items: center;
 }
   
 a {
@@ -76,7 +74,10 @@ a:hover {
 }
   
 body {
-    place-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
     max-width: 1280px;
 }
   
@@ -125,10 +126,6 @@ header {
 
 nav > * {
     padding: 0.5rem;
-}
-
-nav {
-    margin-bottom: 1.5rem;
 }
 
 table {
